@@ -12,7 +12,7 @@ import { ServerStyleSheets } from "@mui/styles";
 export default class MyDocument extends Document {
   static async getInitialProps(
     ctx: DocumentContext
-  ): Promisse<DocumentInitialProps> {
+  ): Promise<DocumentInitialProps> {
     const sheets = new ServerStyleSheets(),
       originalRenderPage = ctx.renderPage;
 

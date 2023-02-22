@@ -4,6 +4,9 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { ThemeProvider } from "@mui/material";
 import theme from "ui/themes/theme";
+import Header from "ui/components/surfaces/Header/Header";
+import Footer from "ui/components/surfaces/Footer/Footer";
+import { AppContainer } from "@styles/pages/_app.styled";
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -13,14 +16,16 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <tittle>e-diaristas</tittle>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-        />
+        <title>e-diaristas {pageProps.title && ` -  ${pageProps.title}`}</title>
       </Head>
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <AppContainer>
+          <Header />
+          <main>
+            <Component {...pageProps} />
+          </main>
+          <Footer />
+        </AppContainer>
       </ThemeProvider>
     </>
   );
